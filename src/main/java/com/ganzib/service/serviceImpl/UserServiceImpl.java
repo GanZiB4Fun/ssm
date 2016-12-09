@@ -20,18 +20,18 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
 
-
+    @Override
     public User getUserById(Long userId) {
         return userMapper.selectUserById(userId);
     }
 
 
-
+    @Override
     public User getUserByPhoneOrEmail(String emailOrPhone, Short state) {
         return userMapper.selectUserByPhoneOrEmail(emailOrPhone,state);
     }
 
-
+    @Override
     public List<User> getAllUser() {
         return userMapper.selectAllUser();
     }

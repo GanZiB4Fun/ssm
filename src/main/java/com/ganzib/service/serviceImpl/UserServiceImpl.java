@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserById(userId);
     }
 
+    @Override
+    public Integer userNum() {
+        return userMapper.userNum();
+    }
+
 
     @Override
     public User getUserByPhoneOrEmail(String emailOrPhone, Short state) {

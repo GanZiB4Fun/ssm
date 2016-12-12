@@ -30,4 +30,8 @@
         SELECT * FROM t_user
     </select>
 
+    <select id="userNum" resultType="integer">
+        SELECT COUNT(*) FROM t_user;
+    </select>
+
 </mapper>

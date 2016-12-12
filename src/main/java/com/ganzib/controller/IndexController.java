@@ -17,6 +17,7 @@ import java.util.List;
 
 
 /**
+ * 用户控制器
  * Created by GanZiB on 16/12/8.
  */
 @Controller
@@ -29,10 +30,10 @@ public class IndexController {
 
     @RequestMapping(value = "/")
     public ModelAndView index(HttpServletRequest request, ModelAndView modelAndView){
-        log.info("查询所有用户信息");
-        List<User> userList = userService.getAllUser();
-        modelAndView.setViewName("user/users");
-        modelAndView.addObject("userList",userList);
+        log.info("进入首页");
+        Integer userNum = userService.userNum();
+        modelAndView.addObject("userNum",userNum);
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 }

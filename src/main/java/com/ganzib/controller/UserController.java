@@ -30,4 +30,22 @@ public class UserController {
         model.addAttribute("userList",userList);
         return "user/users";
     }
+
+    /**
+     * 进入登录页面
+     * @return
+     */
+    @RequestMapping(value = "login",method = RequestMethod.GET)
+    public String intoLogin(){
+        return "login";
+    }
+
+    /**
+     * 进入注册页面
+     * @return
+     */
+    @RequestMapping(value = "register",method = RequestMethod.GET)
+    public String intoRegister(){
+        return "register";
+    }
 }

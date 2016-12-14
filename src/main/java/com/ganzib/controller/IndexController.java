@@ -1,8 +1,10 @@
 package com.ganzib.controller;
 
+import com.ganzib.model.Joke;
 import com.ganzib.model.User;
 import com.ganzib.service.UserService;
 
+import com.ganzib.utils.BaiduUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,8 @@ public class IndexController {
         log.info("进入首页");
         Integer userNum = userService.userNum();
         modelAndView.addObject("userNum",userNum);
+        Joke joke = BaiduUtil.resultJoke();
+        modelAndView.addObject("joke",joke.getNewslist().get(0));
         modelAndView.setViewName("index");
         return modelAndView;
     }

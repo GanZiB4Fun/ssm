@@ -1,5 +1,6 @@
 <%--声明当前页面使用的编码集--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <html>
 <head>
 
@@ -18,11 +19,12 @@
                 background:url("http://szb-head.oss-cn-shanghai.aliyuncs.com/2016121314350121.jpg");
                 background-size: cover;
                 font-size: small;
+                width: 100%;
             }
             .video{
                 width: 450px;
                 height: 150px;
-                margin: 80px auto;
+                margin: 0 auto;
                 padding: 50px;
                 text-align: center;
             }
@@ -77,6 +79,21 @@
             .user .color{color:#3399CC; text-decoration:none;font-weight:bold;}/*链接设置*/
             .user .color:visited{color:#3399CC; text-decoration:none;font-weight:bold;}/*访问过的链接设置*/
             .user .color:hover{color:#CF0000; text-decoration:underline;font-weight:bold;}/*鼠标放上的链接设置*/
+            .joke{
+                width: 450px;
+                height: 50px;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .joke .j_desc{
+                width: 450px;
+                height:30px;
+                background: #FFF;
+                border-radius:14px 14px 14px 14px ;
+                padding:6px;
+            }
+
         </style>
 </head>
 <body>
@@ -95,9 +112,14 @@
                 、<a href="#">土豆网</a>、<>酷六网、搜狐视频、56网、爱奇艺、凤凰网、音悦台、乐视网
             等视频直播网站的视频播放页链接</p>
         </div>
-        <video src="" controls="controls" >
-            您的浏览器不支持video标签
-        </video>
+        <%--<video src="" controls="controls" >--%>
+            <%--您的浏览器不支持video标签--%>
+        <%--</video>--%>
+    </div>
+
+    <div class="joke">
+        <p class="j_desc">脑壳急转弯:${joke.quest}</p>
+        <img src="/images/bg_2.jpg"/>
     </div>
 </body>
 </html>

@@ -6,11 +6,12 @@ body{
     background:url("http://szb-head.oss-cn-shanghai.aliyuncs.com/2016121314350121.jpg");
     background-size: cover;
     font-size: small;
+    width: 100%;
 }
 .video{
     width: 450px;
     height: 150px;
-    margin: 80px auto;
+    margin: 0 auto;
     padding: 50px;
     text-align: center;
 }
@@ -49,8 +50,33 @@ body{
     cursor: pointer;
     font-family: "Yuanti TC";
 }
+.video .v_search .v_btn:hover{
+    background: #5b8ac5;
+}
 .video .v_search .v_desc{
     padding: 10px;
     font-family: sans-serif;
     font-size: 16px;
+}
+.user{
+    padding: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.user .color{color:#3399CC; text-decoration:none;font-weight:bold;}/*链接设置*/
+.user .color:visited{color:#3399CC; text-decoration:none;font-weight:bold;}/*访问过的链接设置*/
+.user .color:hover{color:#CF0000; text-decoration:underline;font-weight:bold;}/*鼠标放上的链接设置*/
+.joke{
+    width: 450px;
+    height: 50px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.joke .j_desc{
+    width: 450px;
+    height:30px;
+    background: #FFF;
+    border-radius:14px 14px 14px 14px ;
+    padding:6px;
 }

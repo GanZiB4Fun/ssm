@@ -1,5 +1,6 @@
 package com.ganzib.controller;
 
+import com.ganzib.model.BaiDuMeiNv;
 import com.ganzib.model.Joke;
 import com.ganzib.model.User;
 import com.ganzib.service.UserService;
@@ -37,6 +38,8 @@ public class IndexController {
         modelAndView.addObject("userNum",userNum);
         Joke joke = BaiduUtil.resultJoke();
         modelAndView.addObject("joke",joke.getNewslist().get(0));
+        BaiDuMeiNv baiDuMeiNv = BaiduUtil.resultMeiNv();
+        modelAndView.addObject("images",baiDuMeiNv.getNewslist());
         modelAndView.setViewName("index");
         return modelAndView;
     }

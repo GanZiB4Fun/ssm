@@ -1,6 +1,7 @@
 package com.ganzib.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ganzib.model.BaiDuMeiNv;
 import com.ganzib.model.Joke;
 
 import java.io.BufferedReader;
@@ -19,12 +20,26 @@ public class BaiduUtil {
      * @return
      */
    public static Joke resultJoke(){
-       String httpUrl = "http://apis.baidu.com/txapi/naowan/naowan";
+       String httpUrl = DispatcherCode.NAO_WAN_API_URL;
        String httpArg = "";
        String jsonResult = request(httpUrl, httpArg);
        Joke joke = (Joke) JSONObject.parseObject(jsonResult,Joke.class);
        return joke;
    }
+
+    /**
+     * 获取百度美女图片
+     * @return
+     */
+   public static BaiDuMeiNv resultMeiNv(){
+       String httpUrl = DispatcherCode.MEI_NV_API_URL;
+       String httpArg = "num=10";
+       String jsonResult = request(httpUrl,httpArg);
+       BaiDuMeiNv baiDuMeiNv = (BaiDuMeiNv)JSONObject.parseObject(jsonResult,BaiDuMeiNv.class);
+       return baiDuMeiNv;
+   }
+
+
 
     /**
      * @param httpUrl

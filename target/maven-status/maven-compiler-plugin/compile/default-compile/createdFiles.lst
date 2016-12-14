@@ -1,8 +1,13 @@
 com/ganzib/service/serviceImpl/UserServiceImpl.class
 com/ganzib/controller/IndexController.class
+com/ganzib/model/Joke$NewslistBean.class
+com/ganzib/model/Joke.class
+com/ganzib/controller/DefualtController.class
+com/ganzib/utils/DispatcherCode.class
 com/ganzib/service/UserService.class
 com/ganzib/utils/RedisCacheTransfer.class
 com/ganzib/model/User.class
+com/ganzib/utils/BaiduUtil.class
 com/ganzib/utils/RedisCache.class
 com/ganzib/controller/UserController.class
 com/ganzib/mapper/UserMapper.class

@@ -1,6 +1,7 @@
 <%--声明当前页面使用的编码集--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 
@@ -10,91 +11,9 @@
         <meta name="description" content="个人网站描述"/>
         <%--css/js--%>
         <%--css样式层--%>
-        <style type="text/css">
-            *{
-                margin: 0;
-                padding: 0;
-            }
-            body{
-                background:url("http://szb-head.oss-cn-shanghai.aliyuncs.com/2016121314350121.jpg");
-                background-size: cover;
-                font-size: small;
-                width: 100%;
-            }
-            .video{
-                width: 450px;
-                height: 150px;
-                margin: 0 auto;
-                padding: 50px;
-                text-align: center;
-            }
-            .video .v_title{
-                font-size: 24px;
-                text-align: center;
-                font-weight: 300;
-                color: #FFF;
-                line-height: 60px;
-                border-radius: 14px 14px 14px 14px;
-            }
-            .video .v_search{
-                width: 450px;
-                height:100px;
-                background: #FFF;
-                border-radius:14px 14px 14px 14px ;
-                padding:6px;
-            }
-            .video .v_search .v_text{
-                width:300px;
-                height: 30px;
-                border: 4px solid #dfdfdf;
-                border-radius:14px 14px 14px 14px ;
-                padding-left: 10px;
-                outline: none;
-            }
-
-            .video .v_search .v_btn{
-                width: 90px;
-                height:32px;
-                border: none;
-                background: #9eafc5;
-                padding-left: 10px;
-                border-radius:14px 14px 14px 14px ;
-                outline: none;
-                cursor: pointer;
-                font-family: "Yuanti TC";
-            }
-            .video .v_search .v_btn:hover{
-                background: #5b8ac5;
-            }
-            .video .v_search .v_desc{
-                padding: 10px;
-                font-family: sans-serif;
-                font-size: 16px;
-            }
-            .user{
-                padding: 40px;
-                font-size: 20px;
-                cursor: pointer;
-            }
-            .user .color{color:#3399CC; text-decoration:none;font-weight:bold;}/*链接设置*/
-            .user .color:visited{color:#3399CC; text-decoration:none;font-weight:bold;}/*访问过的链接设置*/
-            .user .color:hover{color:#CF0000; text-decoration:underline;font-weight:bold;}/*鼠标放上的链接设置*/
-            .joke{
-                width: 450px;
-                height: 50px;
-                text-align: center;
-                margin: 0 auto;
-            }
-
-            .joke .j_desc{
-                width: 450px;
-                height:30px;
-                background: #FFF;
-                border-radius:14px 14px 14px 14px ;
-                padding:6px;
-            }
-
-        </style>
+    <link href="/css/index.css" rel="stylesheet"  type="text/css"/>
+    <script type="text/javascript" src="/js/jquery.min.js" ></script>
+    <link rel="SHORTCUT ICON" href="kuai.ico"/>
 </head>
 <body>
     <%--登录--%>
@@ -116,10 +35,26 @@
             <%--您的浏览器不支持video标签--%>
         <%--</video>--%>
     </div>
-
+    
     <div class="joke">
-        <p class="j_desc">脑壳急转弯:${joke.quest}</p>
-        <img src="/images/bg_2.jpg"/>
+        <p id="quest" class="j_desc">脑壳急转弯:${joke.quest}</p><br/>
+        <input id="answer" type="button" value="查看答案" onclick="getAnswer('${joke.result}')"/>
     </div>
+    <c:forEach items="${images}" var="img">
+        <img src="${img.picUrl}"/>
+    </c:forEach>
+    
 </body>
+    <script type="text/javascript" >
+        var flag = 0;
+        function getAnswer(answer) {
+            var str ='<p style="padding: 2%;">答案:'+answer+'</p><br/>';
+            if (flag<1){
+                $("#quest").append(str);
+                $("#answer").remove();
+                flag++;
+            }
+            
+        }
+    </script>
 </html>

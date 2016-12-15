@@ -71,6 +71,7 @@ body{
     height: 50px;
     text-align: center;
     margin: 0 auto;
+    padding-bottom: 3%;
 }
 
 .joke .j_desc{
@@ -79,4 +80,9 @@ body{
     background: #FFF;
     border-radius:14px 14px 14px 14px ;
     padding:6px;
+}
+.img{
+    height: 50%;
+    width: 33%;
+    margin: 0 auto;
 }

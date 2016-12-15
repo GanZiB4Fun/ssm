@@ -1,8 +1,8 @@
 package com.ganzib.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ganzib.model.BaiDuJoke;
 import com.ganzib.model.BaiDuMeiNv;
-import com.ganzib.model.Joke;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -19,12 +19,12 @@ public class BaiduUtil {
      * 获取脑筋急转弯
      * @return
      */
-   public static Joke resultJoke(){
+   public static BaiDuJoke resultJoke(){
        String httpUrl = DispatcherCode.NAO_WAN_API_URL;
        String httpArg = "";
        String jsonResult = request(httpUrl, httpArg);
-       Joke joke = (Joke) JSONObject.parseObject(jsonResult,Joke.class);
-       return joke;
+       BaiDuJoke baiDuJoke = (BaiDuJoke) JSONObject.parseObject(jsonResult,BaiDuJoke.class);
+       return baiDuJoke;
    }
 
     /**

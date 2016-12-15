@@ -36,12 +36,12 @@
         <%--</video>--%>
     </div>
     
-    <div class="joke">
-        <p id="quest" class="j_desc">脑壳急转弯:${joke.quest}</p><br/>
-        <input id="answer" type="button" value="查看答案" onclick="getAnswer('${joke.result}')"/>
+    <div class="baiDuJoke">
+        <p id="quest" class="j_desc">脑壳急转弯:${baiDuJoke.quest}</p><br/>
+        <input id="answer" type="button" value="查看答案" onclick="getAnswer('${baiDuJoke.result}')"/>
     </div>
     <c:forEach items="${images}" var="img">
-        <img src="${img.picUrl}"/>
+        <img class="img" src="${img.picUrl}"/>
     </c:forEach>
     
 </body>

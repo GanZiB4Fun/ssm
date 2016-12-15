@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,18 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "register",method = RequestMethod.GET)
-    public String intoRegister(){
-        return "register";
+    public ModelAndView intoRegister(){
+        ModelAndView modelAndView = new ModelAndView();
+        String html = "<html>\n" +
+                "<head>\n" +
+                "    <title>Title</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "    <a href='www.baidu.com'>百度</a>\n" +
+                "</body>\n" +
+                "</html>\n";
+        modelAndView.addObject("html",html);
+        modelAndView.setViewName("register");
+        return modelAndView;
     }
 }

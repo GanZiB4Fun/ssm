@@ -86,3 +86,8 @@ body{
     width: 33%;
     margin: 0 auto;
 }
+.img_desc{
+    color: #FFFFFF;
+    text-align: center;
+    text-overline-color: #9eafc5;
+}

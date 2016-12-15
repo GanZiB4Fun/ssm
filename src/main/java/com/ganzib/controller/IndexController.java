@@ -2,6 +2,7 @@ package com.ganzib.controller;
 
 import com.ganzib.model.BaiDuMeiNv;
 import com.ganzib.model.BaiDuJoke;
+import com.ganzib.model.JuHeJokeImg;
 import com.ganzib.service.UserService;
 
 import com.ganzib.utils.BaiduUtil;
@@ -29,7 +30,7 @@ public class IndexController {
     private UserService userService;
 
     @RequestMapping(value = "/")
-    public ModelAndView index(HttpServletRequest request, ModelAndView modelAndView){
+    public ModelAndView index(HttpServletRequest request, ModelAndView modelAndView) throws Exception{
         log.info("进入首页");
         Integer userNum = userService.userNum();
         modelAndView.addObject("userNum",userNum);
@@ -38,7 +39,6 @@ public class IndexController {
         BaiDuMeiNv baiDuMeiNv = BaiduUtil.resultMeiNv();
         modelAndView.addObject("images",baiDuMeiNv.getNewslist());
         modelAndView.setViewName("index");
-        JuHeUtil.getRequest1();
         return modelAndView;
     }
 }

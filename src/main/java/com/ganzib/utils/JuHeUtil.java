@@ -1,5 +1,9 @@
 package com.ganzib.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.ganzib.model.JuHeJokeImg;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,6 +17,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.ganzib.utils.DispatcherCode.*;
+
 
 /**
  *笑话大全调用示例代码 － 聚合数据
@@ -20,23 +26,17 @@ import java.util.Map;
  **/
 
 public class JuHeUtil {
-    public static final String DEF_CHATSET = "UTF-8";
-    public static final int DEF_CONN_TIMEOUT = 30000;
-    public static final int DEF_READ_TIMEOUT = 30000;
-    public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
-
-    //配置您申请的KEY
-    public static final String APPKEY ="903a06be2179149ae9fa0be00f83c31f";
 
     //1.按更新时间查询笑话
-    public static void getRequest1(){
+    public static void getJoke(){
         String result =null;
-        String url ="http://japi.juhe.cn/joke/content/list.from";//请求接口地址
+        String time = String.valueOf(new Date().getTime()).substring(0,10);
+        String url = DispatcherCode.JU_HE_JOKE_URL;//请求接口地址
         Map params = new HashMap();//请求参数
         params.put("sort","");//类型，desc:指定时间之前发布的，asc:指定时间之后发布的
         params.put("page","");//当前页数,默认1
         params.put("pagesize","");//每次返回条数,默认1,最大20
-        params.put("time",String.valueOf(new Date().getTime()).substring(0,10));//时间戳（10位），如：1418816972
+        params.put("time",time);//时间戳（10位），如：1418816972
         params.put("key",APPKEY);//您申请的key
 
         try {
@@ -71,56 +71,38 @@ public class JuHeUtil {
 //    }
 //
 //    //3.按更新时间查询趣图
-//    public static void getRequest3(){
-//        String result =null;
-//        String url ="http://japi.juhe.cn/joke/img/list.from";//请求接口地址
-//        Map params = new HashMap();//请求参数
-//        params.put("sort","");//类型，desc:指定时间之前发布的，asc:指定时间之后发布的
-//        params.put("page","");//当前页数,默认1
-//        params.put("pagesize","");//每次返回条数,默认1,最大20
-//        params.put("time","");//时间戳（10位），如：1418816972
-//        params.put("key",APPKEY);//您申请的key
-//
-//        try {
-//            result =net(url, params, "GET");
-//            JSONObject object = JSONObject.fromObject(result);
-//            if(object.getInt("error_code")==0){
-//                System.out.println(object.get("result"));
-//            }else{
-//                System.out.println(object.get("error_code")+":"+object.get("reason"));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    //4.最新趣图
-//    public static void getRequest4(){
-//        String result =null;
-//        String url ="http://japi.juhe.cn/joke/img/text.from";//请求接口地址
-//        Map params = new HashMap();//请求参数
-//        params.put("page","");//当前页数,默认1
-//        params.put("pagesize","");//每次返回条数,默认1,最大20
-//        params.put("key",APPKEY);//您申请的key
-//
-//        try {
-//            result =net(url, params, "GET");
-//            JSONObject object = JSONObject.fromObject(result);
-//            if(object.getInt("error_code")==0){
-//                System.out.println(object.get("result"));
-//            }else{
-//                System.out.println(object.get("error_code")+":"+object.get("reason"));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public static JuHeJokeImg getJokeImgByTime() throws Exception{
+        String result =null;
+        String time = String.valueOf(new Date().getTime()).substring(0,10);
+        String url ="http://japi.juhe.cn/joke/img/list.from";//请求接口地址
+        Map params = new HashMap();//请求参数
+        params.put("sort","");//类型，desc:指定时间之前发布的，asc:指定时间之后发布的
+        params.put("page","");//当前页数,默认1
+        params.put("pagesize","");//每次返回条数,默认1,最大20
+        params.put("time",time);//时间戳（10位），如：1418816972
+        params.put("key",APPKEY);//您申请的key
 
+        result =net(url, params, "GET");
+        JuHeJokeImg juHeJokeImg = (JuHeJokeImg) JSONObject.parseObject(result,JuHeJokeImg.class);
 
-
-    public static void main(String[] args) {
-
+        return juHeJokeImg;
     }
+
+        //4.最新趣图
+    public static JuHeJokeImg getJokeImgLastest() throws Exception{
+        String result =null;
+        String url ="http://japi.juhe.cn/joke/img/text.from";//请求接口地址
+        Map params = new HashMap();//请求参数
+        params.put("page","");//当前页数,默认1
+        params.put("pagesize","");//每次返回条数,默认1,最大20
+        params.put("key",APPKEY);//您申请的key
+
+        result =net(url, params, "GET");
+        JuHeJokeImg juHeJokeImg = (JuHeJokeImg) JSONObject.parseObject(result,JuHeJokeImg.class);
+
+        return juHeJokeImg;
+    }
+
 
     /**
      *

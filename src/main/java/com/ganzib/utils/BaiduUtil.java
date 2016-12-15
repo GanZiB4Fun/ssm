@@ -33,7 +33,7 @@ public class BaiduUtil {
      */
    public static BaiDuMeiNv resultMeiNv(){
        String httpUrl = DispatcherCode.MEI_NV_API_URL;
-       String httpArg = "num=10";
+       String httpArg = "num=9";
        String jsonResult = request(httpUrl,httpArg);
        BaiDuMeiNv baiDuMeiNv = (BaiDuMeiNv)JSONObject.parseObject(jsonResult,BaiDuMeiNv.class);
        return baiDuMeiNv;

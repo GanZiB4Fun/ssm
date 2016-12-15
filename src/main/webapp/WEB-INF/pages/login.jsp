@@ -8,9 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>登录</title>
+    <style type="text/css">
+        .login{
+
+        }
+    </style>
 </head>
-<body>
+<body style="background:url('http://szb-head.oss-cn-shanghai.aliyuncs.com/2016121314350121.jpg');">
+    <div class="login">
+
+    </div>
 
 </body>
 </html>

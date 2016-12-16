@@ -4,13 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-
-        <%--声明当前页面的三要素--%>
-        <title>GanZiB视频下载组件</title>
-        <meta name="keywords" content="个人网站关键字"/>
-        <meta name="description" content="个人网站描述"/>
-        <%--css/js--%>
-        <%--css样式层--%>
+    <%--声明当前页面的三要素--%>
+    <title>GanZiB视频下载组件</title>
+    <meta name="keywords" content="个人网站关键字"/>
+    <meta name="description" content="个人网站描述"/>
+    <%--css/js--%>
+    <%--css样式层--%>
     <link href="/css/index.css" rel="stylesheet"  type="text/css"/>
     <script type="text/javascript" src="/js/jquery.min.js" ></script>
     <link rel="SHORTCUT ICON" href="kuai.ico"/>

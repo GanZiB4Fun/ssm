@@ -60,4 +60,19 @@ public class UserController {
         modelAndView.setViewName("register");
         return modelAndView;
     }
+
+    @RequestMapping(value = "attest")
+    public String attest(){
+        return "attest";
+    }
+
+    @RequestMapping(value = "getData",method = RequestMethod.POST)
+    public ModelAndView getData(HttpServletRequest request){
+        ModelAndView modelAndView =new ModelAndView();
+
+        request.getParameter("identity");
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+
 }

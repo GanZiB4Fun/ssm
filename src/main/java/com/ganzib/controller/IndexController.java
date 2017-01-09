@@ -32,12 +32,12 @@ public class IndexController {
     @RequestMapping(value = "/")
     public ModelAndView index(HttpServletRequest request, ModelAndView modelAndView) throws Exception{
         log.info("进入首页");
-        Integer userNum = userService.userNum();
-        modelAndView.addObject("userNum",userNum);
-        BaiDuJoke baiDuJoke = BaiduUtil.resultJoke();
-        modelAndView.addObject("joke", baiDuJoke.getNewslist().get(0));
-        BaiDuMeiNv baiDuMeiNv = BaiduUtil.resultMeiNv();
-        modelAndView.addObject("images",baiDuMeiNv.getNewslist());
+//        Integer userNum = userService.userNum();
+//        modelAndView.addObject("userNum",userNum);
+//        BaiDuJoke baiDuJoke = BaiduUtil.resultJoke();
+//        modelAndView.addObject("joke", baiDuJoke.getNewslist().get(0));
+//        BaiDuMeiNv baiDuMeiNv = BaiduUtil.resultMeiNv();
+//        modelAndView.addObject("images",baiDuMeiNv.getNewslist());
         modelAndView.setViewName("index");
         return modelAndView;
     }

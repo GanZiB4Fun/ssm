@@ -19,6 +19,7 @@
     <div class="user">
         <a class="color" href="user/login">登录</a>&nbsp;&nbsp;
         <a class="color" href="user/register">注册</a>
+        <a class="color" href="user/attest">认证</a>
     </div>
     <%--div--%>
     <div class="video">

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.ganzib.mapper.UserBaseMapper">
+
+	<resultMap id="UserBase" type="com.ganzib.model.UserBase">
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="token" column="token"/>
+        <result property="password" column="password"/>
+        <result property="gender" column="gender"/>
+	</resultMap>
+	
+	<sql id="UserBaseColumns">
+	    <![CDATA[
+		user_id,user_name,nick_name,token,password,gender
+	    ]]>
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="userId">
+    <![CDATA[
+        INSERT INTO user_base (
+        	user_id ,
+        	user_name ,
+        	nick_name ,
+        	token ,
+        	password ,
+        	gender 
+        ) VALUES (
+        	#{userId} ,
+        	#{userName} ,
+        	#{nickName} ,
+        	#{token} ,
+        	#{password} ,
+        	#{gender} 
+        )
+    ]]>
+	</insert>
+    
+	<update id="update" >
+    <![CDATA[
+        UPDATE user_base SET
+	        user_name = #{userName} ,
+	        nick_name = #{nickName} ,
+	        token = #{token} ,
+	        password = #{password} ,
+	        gender = #{gender} 
+        WHERE 
+	        user_id = #{userId} 
+    ]]>
+	</update>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM user_base WHERE
+        user_id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultMap="UserBase">
+		SELECT <include refid="UserBaseColumns" />
+	    <![CDATA[
+		    FROM user_base 
+	        WHERE 
+		        user_id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="UserBaseFindPageWhere">
+		<where>
+	       <if test="@Ognl@isNotEmpty(userId)">
+				AND user_id = #{userId}
+			</if>
+	       <if test="@Ognl@isNotEmpty(userName)">
+				AND user_name = #{userName}
+			</if>
+	       <if test="@Ognl@isNotEmpty(nickName)">
+				AND nick_name = #{nickName}
+			</if>
+	       <if test="@Ognl@isNotEmpty(token)">
+				AND token = #{token}
+			</if>
+	       <if test="@Ognl@isNotEmpty(password)">
+				AND password = #{password}
+			</if>
+	       <if test="@Ognl@isNotEmpty(gender)">
+				AND gender = #{gender}
+			</if>
+		</where>
+	</sql>
+
+    <select id="list" resultMap="UserBase">
+    	SELECT <include refid="UserBaseColumns" />
+	    FROM user_base 
+		<include refid="UserBaseFindPageWhere"/>
+		
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+</mapper>
+

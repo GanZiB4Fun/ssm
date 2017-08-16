@@ -27,13 +27,13 @@
 
   </properties>
 
-  <repositories>
+  <!--<repositories>
     <repository>
       <id>local</id>
       <name>本地私有仓库</name>
       <url>http://192.168.1.196:8081/nexus/content/groups/public</url>
     </repository>
-  </repositories>
+  </repositories>-->
 
   <dependencies>
     <!-- 添加jstl依赖 -->
